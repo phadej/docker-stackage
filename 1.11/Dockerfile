@@ -11,14 +11,23 @@ RUN echo "===> Installing stackage LTS-1.11" \
   && echo "documentation: False" >> $CABALCONFIG
 
 ## Install some packages
+#
+# The selection is arbitrary,
+# but I personally use lot's of them
+#
+# I might consider splitting this into "stackage" and "web-stackage".
 RUN echo "===> Installing some packages" \
   && cabal install -j4 \
+    SHA \
     aeson \
     conduit-extra \
+    entropy \
     lens \
+    regex-applicative \
     wai \
-    wai-extra \
     wai-app-static \
+    wai-extra \
     warp \
+    websockets \
     wreq \
   && echo "Done!"
