@@ -7,7 +7,7 @@ ENV CABALCONFIG /root/.cabal/config
 RUN echo "===> Installing stackage LTS-1.11" \
   && cabal update \
   && curl --silent 'http://www.stackage.org/snapshot/lts-1.11/cabal.config?global=true' >> /tmp/stackage.cabal.config \
-  && echo "2badb0b27c98ec9be01825b5b9a94e5d3cbe859deca75cbcfbe8bb8917c76b87  /tmp/stackage.cabal.config" | shasum256 -c \
+  && echo "2badb0b27c98ec9be01825b5b9a94e5d3cbe859deca75cbcfbe8bb8917c76b87  /tmp/stackage.cabal.config" | sha256sum -c \
   && cat /tmp/stackage.cabal.config >> $CABALCONFIG \
   && rm -f /tmp/stackage.cabal.config \
   && echo "library-profiling: False" >> $CABALCONFIG \
