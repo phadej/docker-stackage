@@ -21,8 +21,11 @@ RUN echo "===> Installing stackage LTS-1.11" \
 # I might consider splitting this into "stackage" and "web-stackage".
 RUN echo "===> Installing some packages" \
   && cabal install -j4 \
+    MonadRandom \
+    QuickCheck \
     SHA \
     aeson \
+    arrows \
     conduit-extra \
     entropy \
     lens \
