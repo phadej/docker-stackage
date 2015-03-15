@@ -10,7 +10,7 @@ Create `build.sh`:
 #!/bin/sh
 set -exu
 cd /build
-cabal sandbox remove || true
+rm -rf .cabal-sandbox .cabal.sanbox.config
 cabal clean
 rm -f cabal.config                 # stackage image has global constraints
 cabal install --only-dependencies
