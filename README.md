@@ -16,13 +16,13 @@ rm -f cabal.config                 # stackage image has global constraints
 cabal install --only-dependencies
 cabal configure
 cabal build
-chmod -R a+rw dist                 # we build as root, have to make everything r/w
+chmod -R a+rw dist                 # we build as root, have to make everything rw
 ```
 
 and `Dockerfile`
 
 ```
-FROM        phadej/ghc:7.8.4
+FROM        snoyberg/haskell-scratch
 COPY        dist/build/yourapp/yourapp /yourcompany/yourapp
 ENTRYPOINT  [ "/yourcompany/yourapp" ]
 ```
@@ -30,8 +30,8 @@ ENTRYPOINT  [ "/yourcompany/yourapp" ]
 Then we can create an image without build dependencies:
 
 ```
-docker run --rm=true -v $(pwd):/build phadej/stackage:1.11 sh /build/build.sh  # build binary
-docker build .                                                                 # build image
+docker run --rm=true -v $(pwd):/build phadej/stackage:2.9 sh /build/build.sh  # build binary
+docker build .                                                                # build image
 ```
 
 --
